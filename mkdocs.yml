@@ -1,5 +1,7 @@
 site_name: Pocketx SDK Documentation
-site_url: https://pocketx.github.io/
+site_url: https://pocketx.github.io/PocketxDoc/
+
+# docs_dir: docs  # 明確指定文檔目錄
 
 plugins:
   - search
