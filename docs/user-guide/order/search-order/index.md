@@ -15,6 +15,14 @@
     print(trades)
     ```
 
+    更新單筆後，狀態可能從 `Submitted` 變成 `PartFilled`，並帶成交明細：
+
+    ```text
+    contract=Stock(exchange=<Exchange.TSE: 'TSE'>, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=<Action.Buy: 'Buy'>, price=36.7, quantity=200, order_lot=<StockOrderLot.IntradayOdd: 'IntradayOdd'>, custom_field='test', price_type=<StockPriceType.LMT: 'LMT'>, order_type=<OrderType.ROD: 'ROD'>) status=OrderStatus(id='trade_test_01', status=<Status.PartFilled: 'PartFilled'>, status_code='00', order_quantity=200, deals=[Deal(seq='100095', price=36.7, quantity=100, ts=1732000639.0)], act=<Act.O: '新單'>)
+    ```
+
+    `list_trades()` 回傳當日委託清單，指定其中一筆即 `trades[0]`，內容與上面的 `Trade` 相同。
+
 === "C#"
 
     ```C#

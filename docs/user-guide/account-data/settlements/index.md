@@ -16,6 +16,22 @@
     print(df)
     ```
 
+    ```text
+    [Settlement(date=datetime.date(2024, 11, 14), amount=-38132.0, T=0),
+     Settlement(date=datetime.date(2024, 11, 15), amount=-689690.0, T=1),
+     Settlement(date=datetime.date(2024, 11, 18), amount=-111477.0, T=2)]
+    ```
+
+    以 `T` 為索引的 DataFrame：
+
+    ```text
+       date      amount
+    T
+    0  2024-11-14  -38132.0
+    1  2024-11-15 -689690.0
+    2  2024-11-18 -111477.0
+    ```
+
 === "C#"
 
     ```c#

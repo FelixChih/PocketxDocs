@@ -14,7 +14,13 @@
     )
     ```
 
-    成功時會印出憑證生效日與到期日。
+    ```text
+    簽章憑證 生效日：
+    20241107104927
+
+    簽章憑證 到期日：
+    20241121235959
+    ```
 
 === "C#"
 
@@ -60,10 +66,10 @@
 === "Python"
 
     ```python
-    contract = api.Contracts.Stocks["0050"]
+    contract = api.Contracts.Stocks["0056"]
     order = api.Order(
-        price=60,
-        quantity=1,
+        quantity=2,
+        price=36.8,
         action=pk.constant.Action.Buy,
         price_type=pk.constant.StockPriceType.LMT,
         order_type=pk.constant.OrderType.ROD,
@@ -71,9 +77,24 @@
         custom_field="test",
         account=api.stock_account,
     )
+    print(order)
     trade = api.place_order(contract, order)
     print(trade)
     ```
+
+    `print(order)`：
+
+    ```text
+    action=<Action.Buy: 'Buy'> price=36.8 quantity=2 account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID') custom_field='test' price_type=<StockPriceType.LMT: 'LMT'> order_type=<OrderType.ROD: 'ROD'> order_lot=<StockOrderLot.Common: 'Common'>
+    ```
+
+    `print(trade)`：
+
+    ```text
+    contract=Stock(exchange=<Exchange.TSE: 'TSE'>, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=<Action.Buy: 'Buy'>, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=<StockPriceType.LMT: 'LMT'>, order_type=<OrderType.ROD: 'ROD'>, order_lot=<StockOrderLot.Common: 'Common'>, id='trade_test_01', seqno='_', ordno='_', seq=100200, entid='CA115') status=OrderStatus(id='trade_test_01', status=<Status.Submitted: 'Submitted'>, status_code='00', msg='已處理 YOUR_ACCOUNT_ID 的 0056，價格為 36.8，數量為 2（整張）', order_datetime=datetime.datetime(2024, 11, 14, 3, 40, 47, 885784), order_quantity=2, act=<Act.O: '新單'>)
+    ```
+
+    下單後主控台還會收到委託回報，見 [委託回報](../../callback/index.md)。
 
 === "C#"
 
@@ -153,8 +174,12 @@
 === "Python"
 
     ```python
-    trade = api.update_order(trade=trade, price=61)
+    trade = api.update_order(trade=trade, price=36.9)
     print(trade)
+    ```
+
+    ```text
+    contract=Stock(exchange=<Exchange.TSE: 'TSE'>, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=<Action.Buy: 'Buy'>, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=<StockPriceType.LMT: 'LMT'>, order_type=<OrderType.ROD: 'ROD'>, order_lot=<StockOrderLot.Common: 'Common'>) status=OrderStatus(id='update_test_01', status=<Status.Submitted: 'Submitted'>, status_code='00', msg='已更新 YOUR_ACCOUNT_ID 的 0056，價格為 36.9（整股）', order_datetime=datetime.datetime(2024, 11, 14, 3, 42, 55, 88975), modified_price=36.9, order_quantity=2, act=<Act.R: '改價'>)
     ```
 
 === "C#"
@@ -224,6 +249,10 @@
     print(trade)
     ```
 
+    ```text
+    contract=Stock(exchange=<Exchange.TSE: 'TSE'>, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=<Action.Buy: 'Buy'>, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=<StockPriceType.LMT: 'LMT'>, order_type=<OrderType.ROD: 'ROD'>, order_lot=<StockOrderLot.Common: 'Common'>) status=OrderStatus(id='update_test_01', status=<Status.Submitted: 'Submitted'>, status_code='00', msg='已更新 YOUR_ACCOUNT_ID 的 0056，數量為 1（整股）', order_datetime=datetime.datetime(2024, 11, 14, 3, 51, 6, 821466), order_quantity=2, cancel_quantity=1, act=<Act.M: '改量'>)
+    ```
+
 === "C#"
 
     ```C#
@@ -237,6 +266,10 @@
     ```python
     trade = api.cancel_order(trade=trade)
     print(trade)
+    ```
+
+    ```text
+    contract=Stock(exchange=<Exchange.TSE: 'TSE'>, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=<Action.Buy: 'Buy'>, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=<StockPriceType.LMT: 'LMT'>, order_type=<OrderType.ROD: 'ROD'>, order_lot=<StockOrderLot.Common: 'Common'>) status=OrderStatus(id='update_test_01', status=<Status.Cancelled: 'Cancelled'>, status_code='00', msg='已取消 YOUR_ACCOUNT_ID 的 0056，數量為 0（整股）', order_datetime=datetime.datetime(2024, 11, 14, 3, 53, 46, 212219), order_quantity=2, cancel_quantity=1, act=<Act.C: '刪單'>)
     ```
 
 === "C#"

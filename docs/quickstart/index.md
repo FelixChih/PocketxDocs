@@ -22,6 +22,20 @@
     print(accounts)
     ```
 
+    ```text
+    =========================================== User Logged in ===========================================
+    Spend 0:00:00.598719 !!!!!!!!!!!!!!!!!!!!!!!!
+    Contracts status: Fetched
+
+    簽章憑證 生效日：
+    20241107104927
+
+    簽章憑證 到期日：
+    20241121235959
+
+    [StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')]
+    ```
+
 === "C#"
 
     ```C#
@@ -52,6 +66,12 @@
     trade = api.place_order(contract, order)
     print(trade)
     ```
+
+    ```text
+    status=OrderStatus(id='trade_test_01', status=<Status.Submitted: 'Submitted'>, status_code='00', msg='已處理 YOUR_ACCOUNT_ID 的 0056，價格為 36.8，數量為 2（整張）', order_quantity=2, act=<Act.O: '新單'>)
+    ```
+
+    完整 `Trade` 與改價、改量、刪單的回傳見 [證券下單](../user-guide/order/stock/index.md)。
 
 === "C#"
 

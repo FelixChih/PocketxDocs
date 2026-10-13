@@ -24,6 +24,21 @@
     print(api.Contracts)
     ```
 
+    `fetch_contract=False` 時：
+
+    ```text
+    FetchStatus.Unfetch
+    ```
+
+    手動下載完成時：
+
+    ```text
+    Spend 0:00:00.598719 !!!!!!!!!!!!!!!!!!!!!!!!
+    Contracts status: Fetched
+    FetchStatus.Fetched
+    Indexs=() Stocks=(OES, OTC, TSE) Futures=() Options=() status=<FetchStatus.Fetched: 'Fetched'>
+    ```
+
 === "C#"
 
     登入成功後會開始下載商品檔。
@@ -53,6 +68,24 @@
     contract = api.Contracts.Stocks.TSE["0050"]
     contract = api.Contracts.Stocks.TSE.TSE0050
     print(contract)
+    ```
+
+    交易所下的股票代號清單很長，下面只摘錄開頭：
+
+    ```text
+    TSE(TSE0050, TSE0051, TSE0052, TSE0053, TSE0055, TSE0056, ...)
+    ```
+
+    單一商品：
+
+    ```text
+    exchange=<Exchange.TSE: 'TSE'> code='0050' symbol='TSE0050' name='元大台灣50' category='0' limit_up=209.65 limit_down=171.55 update_date='20240719'
+    ```
+
+    `api.Contracts.Stocks.TSE["0056"]` 與 `api.Contracts.Stocks.TSE.TSE0056` 的結果相同：
+
+    ```text
+    exchange=<Exchange.TSE: 'TSE'> code='0056' symbol='TSE0056' name='元大高股息' category='0' limit_up=44.44 limit_down=36.36 update_date='20240719'
     ```
 
     商品欄位：

@@ -18,6 +18,19 @@
     print(df)
     ```
 
+    ```text
+    [StockProfitLoss(id=0, code='2845', quantity=1000, pnl=0.0, date='20241105', dseq='CA046', price=13.3, pr_ratio=0.0, seqno='463954'),
+     StockProfitLoss(id=1, code='0056', quantity=24000, pnl=-59690.0, date='20241030', dseq='CA067', price=34.0, pr_ratio=-6.82, seqno='463954')]
+    ```
+
+    轉成 DataFrame 後：
+
+    ```text
+       id  code  quantity      pnl      date   dseq   price  pr_ratio    seqno
+    0   0  2845      1000      0.0  20241105  CA046   13.30      0.00   463954
+    1   1  0056     24000 -59690.0  20241030  CA067   34.00     -6.82   463954
+    ```
+
 === "C#"
 
     ```c#

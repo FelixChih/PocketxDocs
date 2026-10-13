@@ -9,6 +9,10 @@
     print(balance)
     ```
 
+    ```text
+    AccountBalance(status=<FetchStatus.Fetched: 'Fetched'> acc_balance=4108825.0 date='2024-11-14T02:47:52.006281' errmsg='')
+    ```
+
     未指定帳號時，查詢預設證券帳號 `api.stock_account`。
 
 === "C#"

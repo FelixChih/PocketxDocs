@@ -19,7 +19,16 @@
     print(accounts)
     ```
 
-    登入成功會回傳帳號列表，並設定預設證券帳號 `api.stock_account`、預設期貨帳號 `api.futopt_account`。
+    登入成功會印出登入訊息，並回傳帳號列表。同時設定預設證券帳號 `api.stock_account`、預設期貨帳號 `api.futopt_account`。`fetch_contract` 為 `True` 時，還會印出商品檔下載結果。
+
+    ```text
+    =========================================== User Logged in ===========================================
+
+    Spend 0:00:00.598719 !!!!!!!!!!!!!!!!!!!!!!!!
+    Contracts status: Fetched
+    [StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'),
+     FutureAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_FUT_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')]
+    ```
 
 === "C#"
 
@@ -51,9 +60,19 @@
 
     api.set_default_account(accounts[0])
     print(api.stock_account)
+    print(api.futopt_account)
     ```
 
     `list_accounts()` 回傳這次登入的帳號。`stock_account` 是預設證券帳號，`futopt_account` 是預設期貨帳號。`set_default_account()` 依傳入帳號的類型，改寫對應的預設帳號。
+
+    ```text
+    [StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'),
+     FutureAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_FUT_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')]
+
+    StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')
+
+    FutureAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_FUT_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')
+    ```
 
 === "C#"
 
@@ -85,6 +104,10 @@
 
     ```python
     api.logout()
+    ```
+
+    ```text
+    =========================================== User Logged out ===========================================
     ```
 
 === "C#"
