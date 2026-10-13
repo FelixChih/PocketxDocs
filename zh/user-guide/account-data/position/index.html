@@ -934,6 +934,15 @@
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">positions</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
+<p><code>list_positions()</code> 回傳 <code>StockPosition</code> 陣列。下面列出其中兩筆，實際筆數依庫存而定：</p>
+<div class="highlight"><pre><span></span><code>[StockPosition(id=0, code='0050', direction=&lt;Action.Buy: 'Buy'&gt;, quantity=4361, price=171.73, last_price=190.3, pnl=79534.0, yd_quantity=4361, margin_purchase_amount=0, collateral=0, short_sale_margin=0, interest=0),
+ StockPosition(id=2, code='0056', direction=&lt;Action.Buy: 'Buy'&gt;, quantity=62030, price=36.72, last_price=37.02, pnl=14221.0, yd_quantity=62030, margin_purchase_amount=0, collateral=0, short_sale_margin=0, interest=0)]
+</code></pre></div>
+<p>轉成 DataFrame 後：</p>
+<div class="highlight"><pre><span></span><code>   id  code direction  quantity   price  last_price     pnl  yd_quantity  margin_purchase_amount  collateral  short_sale_margin  interest
+0   0  0050      Buy      4361  171.73      190.30  79534.0         4361                       0           0                  0         0
+1   2  0056      Buy     62030   36.72       37.02  14221.0        62030                       0           0                  0         0
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pocketx</span><span class="p">.</span><span class="n">ListPositions</span><span class="p">(</span><span class="n">pocketx</span><span class="p">.</span><span class="n">StockAccount</span><span class="p">);</span>

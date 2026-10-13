@@ -1141,7 +1141,13 @@
 
 <span class="n">api</span><span class="o">.</span><span class="n">set_order_callback</span><span class="p">(</span><span class="n">order_callback</span><span class="p">)</span>
 </code></pre></div>
-<p><code>stat</code> 為 <code>pk.constant.OrderState</code>。證券委託是 <code>OrderState.StockOrder</code>，證券成交是 <code>OrderState.StockDeal</code>。</p>
+<p>未自訂回呼時，主控台會印出委託回報。下面是新單；改價、改量、刪單的 <code>act</code> 分別為 <code>改價</code>、<code>改量</code>、<code>刪單</code>。</p>
+<div class="highlight"><pre><span></span><code>【 委託回報 】
+主動委託回報: {'回應訊息': '', '分公司代碼': '6620', '交易帳號': 'YOUR_ACCOUNT_ID', '商品代號': '0056', '商品名稱': '元大高股息', '原始委託日期': '20241114', '原始委託時間': '114047000', '原始預約單編號': '', '委託價格': '36.8', '原始委託股數': '2000', '已成交股數': '0', '已取消股數': '0', '變更後股數': '2000', 'entsta': '盤中單', '委託單編號': 'CA115', '市場別': '集中', 'ptype': '限價', 'side': 'Buy', 'apcode': '整張（仟股）', 'trdt': None, '是否可取消': None, 'entcond': 'ROD', 'act': '新單', 'trantp': None, '是否被交易所主動刪單': '否', '變更前股數': '0', '原始委託來源': '002', '委託來源名稱': '口袋證券官網'}
+【 委託回報 】
+</code></pre></div>
+<p>改價時 <code>委託價格</code> 為 <code>'36.9'</code>、<code>act</code> 為 <code>'改價'</code>、<code>變更前股數</code> 為 <code>'2000'</code>。改量時 <code>已取消股數</code> 為 <code>'1000'</code>、<code>變更後股數</code> 為 <code>'1000'</code>、<code>act</code> 為 <code>'改量'</code>。刪單時 <code>變更後股數</code> 為 <code>'0'</code>、<code>act</code> 為 <code>'刪單'</code>。</p>
+<p>若回報是 JSON，<code>order_callback</code> 的 <code>stat</code> 為 <code>OrderState.StockOrder</code>（成交為 <code>OrderState.StockDeal</code>），<code>msg</code> 為下面的內容。</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="k">void</span><span class="w"> </span><span class="nf">MyCallBackFunction</span><span class="p">(</span><span class="n">OrderState</span><span class="w"> </span><span class="n">orderState</span><span class="p">,</span><span class="w"> </span><span class="kt">dynamic</span><span class="w"> </span><span class="n">msg</span><span class="p">)</span>

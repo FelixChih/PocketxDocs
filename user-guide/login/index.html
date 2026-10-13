@@ -1045,7 +1045,14 @@
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accounts</span><span class="p">)</span>
 </code></pre></div>
-<p>登入成功會回傳帳號列表，並設定預設證券帳號 <code>api.stock_account</code>、預設期貨帳號 <code>api.futopt_account</code>。</p>
+<p>登入成功會印出登入訊息，並回傳帳號列表。同時設定預設證券帳號 <code>api.stock_account</code>、預設期貨帳號 <code>api.futopt_account</code>。<code>fetch_contract</code> 為 <code>True</code> 時，還會印出商品檔下載結果。</p>
+<div class="highlight"><pre><span></span><code>=========================================== User Logged in ===========================================
+
+Spend 0:00:00.598719 !!!!!!!!!!!!!!!!!!!!!!!!
+Contracts status: Fetched
+[StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'),
+ FutureAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_FUT_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')]
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">PocketxSDK</span><span class="p">;</span>
@@ -1074,8 +1081,16 @@
 
 <span class="n">api</span><span class="o">.</span><span class="n">set_default_account</span><span class="p">(</span><span class="n">accounts</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">stock_account</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">futopt_account</span><span class="p">)</span>
 </code></pre></div>
 <p><code>list_accounts()</code> 回傳這次登入的帳號。<code>stock_account</code> 是預設證券帳號，<code>futopt_account</code> 是預設期貨帳號。<code>set_default_account()</code> 依傳入帳號的類型，改寫對應的預設帳號。</p>
+<div class="highlight"><pre><span></span><code>[StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'),
+ FutureAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_FUT_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')]
+
+StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')
+
+FutureAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_FUT_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">PocketxSDK</span><span class="p">;</span>
@@ -1102,6 +1117,8 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">api</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>=========================================== User Logged out ===========================================
 </code></pre></div>
 </div>
 <div class="tabbed-block">

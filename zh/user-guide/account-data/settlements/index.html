@@ -932,6 +932,17 @@
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="vm">__dict__</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">settlements</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>[Settlement(date=datetime.date(2024, 11, 14), amount=-38132.0, T=0),
+ Settlement(date=datetime.date(2024, 11, 15), amount=-689690.0, T=1),
+ Settlement(date=datetime.date(2024, 11, 18), amount=-111477.0, T=2)]
+</code></pre></div>
+<p>以 <code>T</code> 為索引的 DataFrame：</p>
+<div class="highlight"><pre><span></span><code>   date      amount
+T
+0  2024-11-14  -38132.0
+1  2024-11-15 -689690.0
+2  2024-11-18 -111477.0
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pocketx</span><span class="p">.</span><span class="n">Settlements</span><span class="p">();</span>

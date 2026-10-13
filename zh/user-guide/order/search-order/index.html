@@ -933,6 +933,10 @@
 <span class="n">trades</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">list_trades</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trades</span><span class="p">)</span>
 </code></pre></div>
+<p>更新單筆後，狀態可能從 <code>Submitted</code> 變成 <code>PartFilled</code>，並帶成交明細：</p>
+<div class="highlight"><pre><span></span><code>contract=Stock(exchange=&lt;Exchange.TSE: 'TSE'&gt;, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=&lt;Action.Buy: 'Buy'&gt;, price=36.7, quantity=200, order_lot=&lt;StockOrderLot.IntradayOdd: 'IntradayOdd'&gt;, custom_field='test', price_type=&lt;StockPriceType.LMT: 'LMT'&gt;, order_type=&lt;OrderType.ROD: 'ROD'&gt;) status=OrderStatus(id='trade_test_01', status=&lt;Status.PartFilled: 'PartFilled'&gt;, status_code='00', order_quantity=200, deals=[Deal(seq='100095', price=36.7, quantity=100, ts=1732000639.0)], act=&lt;Act.O: '新單'&gt;)
+</code></pre></div>
+<p><code>list_trades()</code> 回傳當日委託清單，指定其中一筆即 <code>trades[0]</code>，內容與上面的 <code>Trade</code> 相同。</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">pocketx</span><span class="p">.</span><span class="n">UpdateStatus</span><span class="p">(</span><span class="n">account</span><span class="p">,</span><span class="w"> </span><span class="n">trade</span><span class="p">);</span>

@@ -1027,6 +1027,15 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">Contracts</span><span class="o">.</span><span class="n">status</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="o">.</span><span class="n">Contracts</span><span class="p">)</span>
 </code></pre></div>
+<p><code>fetch_contract=False</code> 時：</p>
+<div class="highlight"><pre><span></span><code>FetchStatus.Unfetch
+</code></pre></div>
+<p>手動下載完成時：</p>
+<div class="highlight"><pre><span></span><code>Spend 0:00:00.598719 !!!!!!!!!!!!!!!!!!!!!!!!
+Contracts status: Fetched
+FetchStatus.Fetched
+Indexs=() Stocks=(OES, OTC, TSE) Futures=() Options=() status=&lt;FetchStatus.Fetched: 'Fetched'&gt;
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>登入成功後會開始下載商品檔。</p>
@@ -1053,6 +1062,15 @@
 <span class="n">contract</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Contracts</span><span class="o">.</span><span class="n">Stocks</span><span class="o">.</span><span class="n">TSE</span><span class="p">[</span><span class="s2">"0050"</span><span class="p">]</span>
 <span class="n">contract</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Contracts</span><span class="o">.</span><span class="n">Stocks</span><span class="o">.</span><span class="n">TSE</span><span class="o">.</span><span class="n">TSE0050</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">contract</span><span class="p">)</span>
+</code></pre></div>
+<p>交易所下的股票代號清單很長，下面只摘錄開頭：</p>
+<div class="highlight"><pre><span></span><code>TSE(TSE0050, TSE0051, TSE0052, TSE0053, TSE0055, TSE0056, ...)
+</code></pre></div>
+<p>單一商品：</p>
+<div class="highlight"><pre><span></span><code>exchange=&lt;Exchange.TSE: 'TSE'&gt; code='0050' symbol='TSE0050' name='元大台灣50' category='0' limit_up=209.65 limit_down=171.55 update_date='20240719'
+</code></pre></div>
+<p><code>api.Contracts.Stocks.TSE["0056"]</code> 與 <code>api.Contracts.Stocks.TSE.TSE0056</code> 的結果相同：</p>
+<div class="highlight"><pre><span></span><code>exchange=&lt;Exchange.TSE: 'TSE'&gt; code='0056' symbol='TSE0056' name='元大高股息' category='0' limit_up=44.44 limit_down=36.36 update_date='20240719'
 </code></pre></div>
 <p>商品欄位：</p>
 <div class="highlight"><pre><span></span><code>code (str): 商品代碼

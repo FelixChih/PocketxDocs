@@ -1025,6 +1025,18 @@
 <span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">accounts</span><span class="p">)</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>=========================================== User Logged in ===========================================
+Spend 0:00:00.598719 !!!!!!!!!!!!!!!!!!!!!!!!
+Contracts status: Fetched
+
+簽章憑證 生效日：
+20241107104927
+
+簽章憑證 到期日：
+20241121235959
+
+[StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_STOCK_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID')]
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="nn">PocketxSDK</span><span class="p">;</span>
@@ -1055,6 +1067,9 @@
 <span class="n">trade</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">place_order</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trade</span><span class="p">)</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>status=OrderStatus(id='trade_test_01', status=&lt;Status.Submitted: 'Submitted'&gt;, status_code='00', msg='已處理 YOUR_ACCOUNT_ID 的 0056，價格為 36.8，數量為 2（整張）', order_quantity=2, act=&lt;Act.O: '新單'&gt;)
+</code></pre></div>
+<p>完整 <code>Trade</code> 與改價、改量、刪單的回傳見 <a href="../user-guide/order/stock/">證券下單</a>。</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">order</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StockOrder</span><span class="p">()</span>

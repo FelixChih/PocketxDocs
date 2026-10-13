@@ -1109,7 +1109,12 @@
     <span class="n">person_id</span><span class="o">=</span><span class="s2">"YOUR_PERSON_ID"</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
-<p>成功時會印出憑證生效日與到期日。</p>
+<div class="highlight"><pre><span></span><code>簽章憑證 生效日：
+20241107104927
+
+簽章憑證 到期日：
+20241121235959
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>激活憑證的寫法見 <a href="../../login/">登入</a> 範例中的 <code>ca_activate</code>。</p>
@@ -1153,10 +1158,10 @@ ca (binary): the ca of this order
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label><label for="__tabbed_3_2">C#</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">contract</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Contracts</span><span class="o">.</span><span class="n">Stocks</span><span class="p">[</span><span class="s2">"0050"</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">contract</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Contracts</span><span class="o">.</span><span class="n">Stocks</span><span class="p">[</span><span class="s2">"0056"</span><span class="p">]</span>
 <span class="n">order</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">Order</span><span class="p">(</span>
-    <span class="n">price</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
-    <span class="n">quantity</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">quantity</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">price</span><span class="o">=</span><span class="mf">36.8</span><span class="p">,</span>
     <span class="n">action</span><span class="o">=</span><span class="n">pk</span><span class="o">.</span><span class="n">constant</span><span class="o">.</span><span class="n">Action</span><span class="o">.</span><span class="n">Buy</span><span class="p">,</span>
     <span class="n">price_type</span><span class="o">=</span><span class="n">pk</span><span class="o">.</span><span class="n">constant</span><span class="o">.</span><span class="n">StockPriceType</span><span class="o">.</span><span class="n">LMT</span><span class="p">,</span>
     <span class="n">order_type</span><span class="o">=</span><span class="n">pk</span><span class="o">.</span><span class="n">constant</span><span class="o">.</span><span class="n">OrderType</span><span class="o">.</span><span class="n">ROD</span><span class="p">,</span>
@@ -1164,9 +1169,17 @@ ca (binary): the ca of this order
     <span class="n">custom_field</span><span class="o">=</span><span class="s2">"test"</span><span class="p">,</span>
     <span class="n">account</span><span class="o">=</span><span class="n">api</span><span class="o">.</span><span class="n">stock_account</span><span class="p">,</span>
 <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>
 <span class="n">trade</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">place_order</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">order</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trade</span><span class="p">)</span>
 </code></pre></div>
+<p><code>print(order)</code>：</p>
+<div class="highlight"><pre><span></span><code>action=&lt;Action.Buy: 'Buy'&gt; price=36.8 quantity=2 account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID') custom_field='test' price_type=&lt;StockPriceType.LMT: 'LMT'&gt; order_type=&lt;OrderType.ROD: 'ROD'&gt; order_lot=&lt;StockOrderLot.Common: 'Common'&gt;
+</code></pre></div>
+<p><code>print(trade)</code>：</p>
+<div class="highlight"><pre><span></span><code>contract=Stock(exchange=&lt;Exchange.TSE: 'TSE'&gt;, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=&lt;Action.Buy: 'Buy'&gt;, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=&lt;StockPriceType.LMT: 'LMT'&gt;, order_type=&lt;OrderType.ROD: 'ROD'&gt;, order_lot=&lt;StockOrderLot.Common: 'Common'&gt;, id='trade_test_01', seqno='_', ordno='_', seq=100200, entid='CA115') status=OrderStatus(id='trade_test_01', status=&lt;Status.Submitted: 'Submitted'&gt;, status_code='00', msg='已處理 YOUR_ACCOUNT_ID 的 0056，價格為 36.8，數量為 2（整張）', order_datetime=datetime.datetime(2024, 11, 14, 3, 40, 47, 885784), order_quantity=2, act=&lt;Act.O: '新單'&gt;)
+</code></pre></div>
+<p>下單後主控台還會收到委託回報，見 <a href="../../callback/">委託回報</a>。</p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">contract</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pocketx</span><span class="p">.</span><span class="n">Contracts</span><span class="p">.</span><span class="n">Stocks</span><span class="p">[</span><span class="s">"TSE"</span><span class="p">][</span><span class="s">"0050"</span><span class="p">];</span>
@@ -1240,8 +1253,10 @@ ca (binary): the ca of this order
 <div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Python</label><label for="__tabbed_4_2">C#</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">trade</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">update_order</span><span class="p">(</span><span class="n">trade</span><span class="o">=</span><span class="n">trade</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">61</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">trade</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">update_order</span><span class="p">(</span><span class="n">trade</span><span class="o">=</span><span class="n">trade</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mf">36.9</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trade</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>contract=Stock(exchange=&lt;Exchange.TSE: 'TSE'&gt;, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=&lt;Action.Buy: 'Buy'&gt;, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=&lt;StockPriceType.LMT: 'LMT'&gt;, order_type=&lt;OrderType.ROD: 'ROD'&gt;, order_lot=&lt;StockOrderLot.Common: 'Common'&gt;) status=OrderStatus(id='update_test_01', status=&lt;Status.Submitted: 'Submitted'&gt;, status_code='00', msg='已更新 YOUR_ACCOUNT_ID 的 0056，價格為 36.9（整股）', order_datetime=datetime.datetime(2024, 11, 14, 3, 42, 55, 88975), modified_price=36.9, order_quantity=2, act=&lt;Act.R: '改價'&gt;)
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -1306,6 +1321,8 @@ ca (binary): the ca of this order
 <div class="highlight"><pre><span></span><code><span class="n">trade</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">update_order</span><span class="p">(</span><span class="n">trade</span><span class="o">=</span><span class="n">trade</span><span class="p">,</span> <span class="n">qty</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trade</span><span class="p">)</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>contract=Stock(exchange=&lt;Exchange.TSE: 'TSE'&gt;, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=&lt;Action.Buy: 'Buy'&gt;, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=&lt;StockPriceType.LMT: 'LMT'&gt;, order_type=&lt;OrderType.ROD: 'ROD'&gt;, order_lot=&lt;StockOrderLot.Common: 'Common'&gt;) status=OrderStatus(id='update_test_01', status=&lt;Status.Submitted: 'Submitted'&gt;, status_code='00', msg='已更新 YOUR_ACCOUNT_ID 的 0056，數量為 1（整股）', order_datetime=datetime.datetime(2024, 11, 14, 3, 51, 6, 821466), order_quantity=2, cancel_quantity=1, act=&lt;Act.M: '改量'&gt;)
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="kt">var</span><span class="w"> </span><span class="n">updatedTrade2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pocketx</span><span class="p">.</span><span class="n">UpdateOrder</span><span class="p">(</span><span class="n">trade</span><span class="p">,</span><span class="w"> </span><span class="n">price</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">quantity</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
@@ -1319,6 +1336,8 @@ ca (binary): the ca of this order
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">trade</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">cancel_order</span><span class="p">(</span><span class="n">trade</span><span class="o">=</span><span class="n">trade</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trade</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>contract=Stock(exchange=&lt;Exchange.TSE: 'TSE'&gt;, code='0056', symbol='TSE0056', name='元大高股息', category='0', limit_up=44.44, limit_down=36.36, update_date='20240719') order=Order(action=&lt;Action.Buy: 'Buy'&gt;, price=36.8, quantity=2, account=StockAccount(person_id='YOUR_PERSON_ID', broker_id='6620', account_id='YOUR_ACCOUNT_ID', signed=True, username='USERNAME', nanoid='YOUR_NANOID'), custom_field='test', price_type=&lt;StockPriceType.LMT: 'LMT'&gt;, order_type=&lt;OrderType.ROD: 'ROD'&gt;, order_lot=&lt;StockOrderLot.Common: 'Common'&gt;) status=OrderStatus(id='update_test_01', status=&lt;Status.Cancelled: 'Cancelled'&gt;, status_code='00', msg='已取消 YOUR_ACCOUNT_ID 的 0056，數量為 0（整股）', order_datetime=datetime.datetime(2024, 11, 14, 3, 53, 46, 212219), order_quantity=2, cancel_quantity=1, act=&lt;Act.C: '刪單'&gt;)
 </code></pre></div>
 </div>
 <div class="tabbed-block">
