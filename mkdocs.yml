@@ -1,5 +1,5 @@
 site_name: Pocketx SDK Documentation
-site_url: https://pocketx.github.io/PocketxDoc/
+site_url: https://felixchih.github.io/PocketxDocs/
 
 # docs_dir: docs  # 明確指定文檔目錄
 
@@ -44,11 +44,6 @@ nav:
   - User Guide:
     - Login: user-guide/login/index.md
     - Contract: user-guide/contract/index.md
-    - Market Data:
-      - Real Time:
-        - Stock: user-guide/market-data/real-time/stock/index.md
-      - Historical: user-guide/market-data/historical/index.md
-      - Snapshot: user-guide/market-data/snapshot/index.md
     - Order:
       - Stock: user-guide/order/stock/index.md
       - Search Order: user-guide/order/search-order/index.md
@@ -60,8 +55,6 @@ nav:
       - position: user-guide/account-data/position/index.md
       - profit-loss: user-guide/account-data/profit-loss/index.md
       - settlements: user-guide/account-data/settlements/index.md
-    - Simulation: user-guide/simulation/index.md
-    - Advance Guide: user-guide/advance-guide/index.md
 
 markdown_extensions:
   - toc:

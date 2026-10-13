@@ -1,15 +1,27 @@
 # 未實現損益
 
-用於查詢未實現損益，需要先登入。
+查詢未實現損益（庫存）。請先登入。
 
-!!! Example "Input"
+=== "Python"
+
+    未指定帳號時，查詢預設證券帳號。回傳為陣列，可轉成 DataFrame。
+
+    ```python
+    import pandas as pd
+
+    positions = api.list_positions()
+    print(positions)
+
+    df = pd.DataFrame(item.__dict__ for item in positions)
+    print(df)
+    ```
+
+=== "C#"
 
     ```c#
     var res = pocketx.ListPositions(pocketx.StockAccount);
     Console.WriteLine($"Positions: {res}")
     ```
-
-!!! Success "Output"
 
     ```json
     Positions: [
@@ -46,26 +58,24 @@
     ]
     ```
 
-!!! Info "Attribute"
-
-    ```
-    yd_quantity (int): 昨日庫存數量
-    cond (StockOrderCond): {
-            Cash: 現股(預設值), 
-            Netting: 餘額交割,
-            MarginTrading: 融資, 
-            ShortSelling: 融券, 
-            Emerging: 興櫃
-        }
-    margin_purchase_amount (int):  融資金額
-    collateral (int): 擔保品
-    short_sale_margin (int): 保證金
-    interest (int): 除息
-    id (int): 部位代碼
-    code (str):商品代碼
-    direction (str): {Buy: 買, Sell: 賣}
-    quantity (int): 數量,
-    price (float): 平均價格,
-    last_price (float): 目前股價,
-    pnl (float): 損益
-    ```
+```
+yd_quantity (int): 昨日庫存數量
+cond (StockOrderCond): {
+        Cash: 現股(預設值), 
+        Netting: 餘額交割,
+        MarginTrading: 融資, 
+        ShortSelling: 融券, 
+        Emerging: 興櫃
+    }
+margin_purchase_amount (int):  融資金額
+collateral (int): 擔保品
+short_sale_margin (int): 保證金
+interest (int): 除息
+id (int): 部位代碼
+code (str):商品代碼
+direction (str): {Buy: 買, Sell: 賣}
+quantity (int): 數量
+price (float): 平均價格
+last_price (float): 目前股價
+pnl (float): 損益
+```

@@ -1,15 +1,32 @@
-## 商品檔
+# 商品檔
 
-商品檔將在很多地方被使用，例如下單、訂閱行情...等。
+商品檔用於下單時指定標的。目前對外提供的商品為證券。
 
-### 取得商品檔
-當登入成功後，會開始下載商品檔。
+登入時 `fetch_contract` 預設為 `True`，會下載商品檔。若登入時設為 `False`，可再呼叫 `fetch_contracts()` 下載。
 
-### 商品檔資訊
+## 商品檔狀態
 
-目前我們所提供的商品只有證券 (未來會提供更多交易商品)。可從下列方法更詳細得到我們所提供的商品。
+=== "Python"
 
-!!! Example "Input"
+    尚未下載時，狀態為 `FetchStatus.Unfetch`。下載完成為 `FetchStatus.Fetched`。
+
+    ```python
+    api = pk.Pocket()
+    api.login(
+        api_key="YOUR_API_KEY",
+        password="YOUR_PASSWORD",
+        fetch_contract=False,
+    )
+    print(api.Contracts.status)
+
+    api.fetch_contracts(contract_download=True)
+    print(api.Contracts.status)
+    print(api.Contracts)
+    ```
+
+=== "C#"
+
+    登入成功後會開始下載商品檔。
 
     ```c#
     using PocketxSDK;
@@ -19,25 +36,48 @@
     Console.WriteLine(_contract);
     ```
 
-!!! Success "Output"
-
     ```json
     {
         "Indexs":{},"Stocks":{"OTC":{"006201":{"security_type":"STK","code":"006201","symbol":"OTC006201","exchange":"OTC","limit_up":26.57,"limit_down":21.75,"reference":0.0,"margin_trading_balance":0,"short_selling_balance":0,"update_date":"2024/07/19","category":"00","day_trade":2,"name":"元大富櫃50","target_code":""}, .... }}
     }
     ```
 
+## 查詢證券
 
-#### 證券
+=== "Python"
 
-!!! Example "Input"
+    ```python
+    print(api.Contracts.Stocks.TSE)
+
+    contract = api.Contracts.Stocks["0050"]
+    contract = api.Contracts.Stocks.TSE["0050"]
+    contract = api.Contracts.Stocks.TSE.TSE0050
+    print(contract)
+    ```
+
+    商品欄位：
+
+    ```
+    code (str): 商品代碼
+    symbol (str): 符號，例如 TSE0050
+    name (str): 商品名稱
+    exchange (Exchange): 交易所 {TSE, OTC, OES}
+    category (str): 類別
+    limit_up (float): 漲停價
+    limit_down (float): 跌停價
+    reference (float): 參考價
+    update_date (str): 更新日期
+    margin_trading_balance (int): 融資餘額
+    short_selling_balance (int): 融券餘額
+    day_trade (DayTrade): 可否當沖 {Yes, No, OnlyBuy}
+    ```
+
+=== "C#"
 
     ```c#
     var contract_0050 = _api.Contracts.Stocks["TSE"]["0050"];
     Console.WriteLine(contract_0050.ToString());
     ```
-
-!!! Success "Out:"
 
     ```json
     {
@@ -57,8 +97,6 @@
         "target_code":"",
     }
     ```
-
-!!! Info "Attribute"
 
     ```
     code (str): 商品代碼

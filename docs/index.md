@@ -1,32 +1,24 @@
-<!-- # Welcome to My Docs
-
-This site is built with **MkDocs** and the **Material** theme.
-
-> You can write Markdown just like in GitHub!
-
-## Hello docs -->
-
 # 歡迎來到 Pocketx SDK Documentation！
 
-> **準備好開始你的金融科技之旅了嗎？** 
+Pocketx 提供 Python 與 C# 兩種 SDK，供投資人透過 API 進行台股證券交易。兩種 SDK 連接同一套下單服務。
 
+同一頁的範例可用 **Python** / **C#** 分頁切換。選取其中一種語言後，該頁其他範例會跟著切換。
 
-## 什麼是 Pocketx？
-PocketxSDK 是用C#語言開發的應用程式介面，提供投資者在台灣和全球金融市場上進行交易。
+## 環境
 
+- Python：3.9，安裝指令 `pip install pocketx`
+- 憑證簽章：Windows
+- C# SDK：Windows
 
-## 目前提供的程式語言
-- Python
-- C#
+## 目前提供的功能
 
-## 支持作業系統
-- Windows11
+- 登入、帳號、登出
+- 商品檔
+- 證券下單、改價、改量、刪單
+- 委託狀態更新、委託回報
+- 銀行餘額、未實現損益、已實現損益、交割款
 
 ## 快速開始
 
-- [快速開始](../quickstart/index.md)
-- [事前準備](../prepare/index.md)
-
----
-
-> **準備好了嗎？讓我們開始這段精彩的程式設計之旅！** ✨
+- [事前準備](prepare/index.md)
+- [快速開始](quickstart/index.md)
