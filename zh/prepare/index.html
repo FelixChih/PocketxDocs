@@ -388,6 +388,45 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
+        憑證申請
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="憑證申請">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下載、登入與驗證
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同意條款並儲存 PFX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         安裝
       
     </span>
@@ -959,6 +998,45 @@
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
+        憑證申請
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="憑證申請">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下載、登入與驗證
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pfx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        同意條款並儲存 PFX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
         安裝
       
     </span>
@@ -986,8 +1064,23 @@
 <h1 id="_1">事前準備<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>使用 SDK 前，請先擁有口袋證券帳戶，並完成文件簽署以取得 API Key。</p>
 <p>開戶請見 <a href="https://www.pocket.tw/openaccountonline/oa/home?mkCode=MK0000&amp;channel=CH0003&amp;utm_source=pocketw&amp;openExternalBrowser=1&amp;showYuShanBtn=Y">口袋開戶</a>。</p>
-<p>下單前需要憑證檔（<code>.pfx</code>）。憑證簽章目前僅支援 Windows。憑證申請方式將另行補充。</p>
-<h2 id="_2">安裝<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>下單前需要憑證檔（<code>.pfx</code>）。憑證簽章目前僅支援 Windows。請用口袋憑證管家（WebCA@PC）申請。</p>
+<h2 id="_2">憑證申請<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">下載、登入與驗證<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<ol>
+<li>下載並開啟口袋憑證管家。</li>
+<li>以使用者帳號（身分證字號）與使用者密碼登入。</li>
+<li>完成生日驗證，並輸入簡訊 OTP。</li>
+</ol>
+<p><img alt="WebCA 憑證申請：下載、登入與簡訊驗證" src="../../prepare/webca-apply-1.png" /></p>
+<h3 id="pfx">同意條款並儲存 PFX<a class="headerlink" href="#pfx" title="Permanent link">&para;</a></h3>
+<ol>
+<li>閱讀並同意憑證申請條款。</li>
+<li>指定 PFX 的儲存路徑與檔名，例如 <code>D:\TWCA\你的身分證字號.pfx</code>。</li>
+<li>申請完成後，請保存憑證路徑、憑證密碼與效期。之後在 SDK 呼叫 <code>activate_ca</code>（Python）或 <code>ca_activate</code>（C#）時會用到這個檔案。</li>
+</ol>
+<p><img alt="WebCA 憑證申請：同意條款、指定路徑與申請完成" src="../../prepare/webca-apply-2.png" /></p>
+<h2 id="_4">安裝<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Python</label><label for="__tabbed_1_2">C#</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
