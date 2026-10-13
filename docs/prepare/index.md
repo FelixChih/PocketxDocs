@@ -6,6 +6,20 @@
 
 下單前需要憑證檔（`.pfx`）。憑證簽章目前僅支援 Windows。請用口袋憑證管家（WebCA@PC）申請。
 
+## 安裝
+
+=== "Python"
+
+    Python 3.9：
+
+    ```bash
+    pip install pocketx
+    ```
+
+=== "C#"
+
+    請使用公司提供的 PocketxSDK 套件。憑證簽章需在 Windows 執行。
+
 ## 憑證申請
 
 ### 下載、登入與驗證
@@ -23,17 +37,3 @@
 6. 申請完成後，請保存憑證路徑、憑證密碼與效期。之後在 SDK 呼叫 `activate_ca`（Python）或 `ca_activate`（C#）時會用到這個檔案。
 
 ![WebCA 憑證申請：同意條款、指定路徑與申請完成](webca-apply-2.png)
-
-## 安裝
-
-=== "Python"
-
-    Python 3.9：
-
-    ```bash
-    pip install pocketx
-    ```
-
-=== "C#"
-
-    請使用公司提供的 PocketxSDK 套件。憑證簽章需在 Windows 執行。
